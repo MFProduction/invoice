@@ -1,0 +1,20 @@
+<%= render "shared/page_title", title: "Forgot your password" %>
+<%= devise_error_messages! %>
+<div class="row">
+  <div class="well col-md-8 col-md-offset-2">
+
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Send me reset password instructions", class: "btn btn-success" %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

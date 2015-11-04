@@ -1,0 +1,32 @@
+<table class="table table-condensed table-hover">
+    <thead>
+      <tr>
+        <th>receipt Date</th>
+        <th>Number</th>
+        <th>Issue Date</th>
+        <th>Supplier</th>
+        <th>Tax code</th>
+        <th>Amount</th>
+        <th>Analytic</th>
+        <th>CBS</th>
+        <th>Payment Date</th>
+      </tr>
+    </thead>
+    <tbody>
+  <% obj.each do |invoice| %>
+      <tr>
+        <td><%= invoice.receiptDate.strftime("%-d.%-m.%Y") %></td>
+        <td><%= invoice.number %></td>
+        <td><%= invoice.created_at.strftime("%-d.%-m.%Y") %></td>
+        <td><%= invoice.supplier %></td>
+        <td><%= invoice.taxCode %></td>
+        <td><%= humanized_money Money.new(invoice.amount) %><%= currency_symbol %></td>
+        <td  data-toggle="tooltip" title="<%= invoice.analytic.name %>"><%= invoice.analytic.number %></td>
+          <td  data-toggle="tooltip" title="<%= invoice.costbreakdown.name %>"><%= invoice.costbreakdown.number %></td>
+       
+        <td><%= invoice.paymentDate.strftime("%-d.%-m.%Y") %></td>
+      </tr>
+      <tr>
+  <% end %>
+    </tbody>
+  </table>

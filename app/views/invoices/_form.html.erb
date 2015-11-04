@@ -1,0 +1,28 @@
+<%= render "shared/errors", obj: @invoice %>
+<div class="row">
+  <div class="well col-md-8 col-md-offset-2">
+    <%= form_for @invoice, url: {action: "create"} do |f| %>
+    <%= f.label :supplier  %>
+    <%= f.text_field :supplier  %>
+	<%= f.label :number  %>
+    <%= f.text_field :number  %>
+    <%= f.label :taxCode  %>
+    <%= f.text_field :taxCode  %>
+    <%= f.label :amount  %>
+    <%= f.number_field :amount     %>
+    <%= f.label :receipetDate, "receipt Date" %> 
+    <%= date_select("invoice", "receiptDate", order: [:day, :month, :year]) %>
+    <%= f.label :paymentDate, "payment Date" %> 
+    <%= date_select("invoice", "paymentDate", order: [:day, :month, :year]) %>
+    <br>
+    <%= f.label :analytic_id, "Analytic" %> 
+    <%= collection_select(:invoice, :analytic_id, Analytic.all, :id, :name) %>
+    <br>
+    <%= f.label :costbreakdown_id, "CBS" %> 
+    <%= collection_select(:invoice, :costbreakdown_id, Costbreakdown.all, :id, :name) %>
+    <br>
+    
+    <%= f.submit(@invoice.new_record? ? "Create" : "Edit", class:"btn btn-success")  %>
+    <% end  %>
+  </div>
+</div>

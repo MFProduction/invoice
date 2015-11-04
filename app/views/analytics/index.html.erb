@@ -1,0 +1,20 @@
+<%= render "shared/page_title", title: "Analytics" %>
+<% if user_signed_in? and current_user.has_role? :admin %>
+	<%= link_to("New Analytic", new_analytic_path , class:"btn btn-primary") %>
+<% end %>
+<div class="paginate"><%= will_paginate %></div>
+<table class="table table-condensed table-hover">
+	<thead>
+		<th>Name</th>
+		<th>number</th>
+	</thead>
+	<tbody>
+		<% @analytics.each do |analytic| %>
+			<tr>
+				<td><%= analytic.name %></td>
+				<td><%= analytic.number %></td>
+		
+			</tr>
+		<% end %>
+	</tbody>
+</table>

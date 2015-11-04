@@ -1,0 +1,10 @@
+<%= render "shared/errors", obj: @org %>
+<div class="row">
+  <div class="well col-md-8 col-md-offset-2">
+    <%= form_for (@org) do |f| %>
+    <%= f.label :name  %>
+    <%= f.text_field :name  %>
+    <%= f.submit(@org.new_record? ? "Create" : "Edit", class:"btn btn-success")  %>
+    <% end  %>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+$navbar-default-bg: #312312;
+$light-orange: #ff8c00;
+$navbar-default-color: $light-orange;
+
+
+body {
+ 
+}
+
+.center {
+  text-align:center;
+}
+
+h1, h2, h3, h4 {
+  line-height:1;
+}
+h1 {
+  font-size:3em;
+  letter-spacing:-2px;
+  margin-bottom:30px;
+  text-align:ceter;
+}
+h2 {
+  font-size: 1.2em;
+  margin-bottom:30px;
+  text-align:ceter;
+  font-weight:normal;
+  color:#777;
+  
+}
+.left {
+  text-align:left;
+  letter-spacing: .5px;
+}
+
+.footer {
+  margin-top:25px;
+  border-top:1px solid #eaeaea;
+  color:black;
+}
+input, textarea, .uneditable-input {
+  border: 1px solid #d2d2d2;
+  border-radius:5px;
+  width:100%;
+  margin-bottom:15px;
+} 
+
+.input {
+  height: auto !important;
+}
+.input_checkbox input {
+  width: auto !important;
+}

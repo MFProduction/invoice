@@ -1,0 +1,19 @@
+<%= render "shared/page_title", title: "Cost Breakdown Scheme" %>
+<% if user_signed_in? and current_user.has_role? :admin %>
+	<%= link_to("New CBS", new_costbreakdown_path , class:"btn btn-primary") %>
+<% end %>
+<div class="paginate"><% will_paginate @costbreakdowns %></div>
+<table class="table table-condensed table-hover">
+	<thead>
+		<th>Name</th>
+		<th>number</th>
+	</thead>
+	<tbody>
+		<% @costbreakdowns.each do |cbs| %>
+			<tr>
+				<td><%= cbs.name %></td>
+				<td><%= cbs.number %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
