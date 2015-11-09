@@ -1,16 +1,9 @@
-<%= render "shared/page_title", title: "invoices" %>
+<%= render "shared/page_title", title: @org.name %>
+<%= render "shared/second_navigation", obj: @org %>
 
-<% if user_signed_in? and current_user.has_role? :admin  %>
-    <ul class="nav nav-tabs">
-      <li class=""><%= link_to @org.name, organization_path(@org) %></li>
-      <li class="active"><%= link_to("Invoices", organization_invoices_path(@org) , class:"") %></li>
-      <li><%= link_to("Analytics", analytics_path ) %></li>
-      <li><%= link_to("CBS", costbreakdowns_path ) %></li>
-      <li><%= link_to("Edit organization", edit_organization_path(@org), class:"") %></li>
-    </ul>
-  
-  <%= link_to("New invoice", new_organization_invoice_path , class:"btn btn-primary") %>
-<% end %>
+
+<div class="main">
+<%= link_to("New invoice", new_organization_invoice_path , class:"btn btn-primary") %>
 <div class="paginate"><%= will_paginate %></div>
 <%= render "shared/invoiceTable", obj: @invoices %> 
-
+</div>

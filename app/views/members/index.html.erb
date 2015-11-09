@@ -1,0 +1,21 @@
+<%= render "shared/page_title", title: @org.name+": members" %>
+<%= render "shared/second_navigation", obj: @org %>
+<div class="main">
+<% if user_signed_in? and current_user.has_role? :admin %>
+  <%= link_to("Add new members", "", class:"btn btn-primary") %>
+<% end %>
+  <table class="table table-condensed table-hover">
+    <thead>
+      <tr>
+        <th>email</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @members.each do |member| %>
+     <tr>
+        <td><%= member.email %></td>     
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+</div>  

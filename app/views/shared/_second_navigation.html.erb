@@ -1,0 +1,15 @@
+<div class="second-navigation">
+<% if user_signed_in? and (current_user.has_role? :admin or current_user.has_role? :orgAdmin) %>
+    <ul class="nav nav-tabs">
+      <li <% if params[:controller] == "organizations"  %> class="active" <% end -%>>
+          <%=  link_to obj.name, organization_path(obj) %>
+      </li>
+      <li <% if params[:controller] == "invoices"  %> class="active" <% end -%>> <%= link_to("Invoices", organization_invoices_path(obj) , class:"") %></li>
+      <li <% if params[:controller] == "costcenters"  %> class="active" <% end -%>><%= link_to("Cost centers", organization_costcenters_path(obj) ) %></li>
+       <li <% if params[:controller] == "members"  %> class="active" <% end -%>><%= link_to("members", organization_members_path(obj) ) %></li>   
+    </ul>
+  <% end %>
+</div>
+
+
+  

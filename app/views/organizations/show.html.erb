@@ -1,15 +1,12 @@
 <%= render "shared/page_title", title: @org.name %>
+<%= render "shared/second_navigation", obj: @org %>
 
-<div class="row">
-  <% if user_signed_in? and current_user.has_role? :admin %>
-    <ul class="nav nav-tabs">
-      <li class="active"><%= link_to @org.name, organization_path %></li>
-      <li><%= link_to("Invoices", organization_invoices_path(@org) , class:"") %></li>
-      <li><%= link_to("Analytics", analytics_path ) %></li>
-      <li><%= link_to("CBS", costbreakdowns_path ) %></li>
-      <li><%= link_to("Edit organization", edit_organization_path, class:"") %></li>
-    </ul>
-  <% end %>
-  <br>
+<div class="main">
+	<div class="pull-right">
+		<br>
+<%= link_to("Edit organization", edit_organization_path, class:"btn btn-primary") %>
+<%= link_to("Delete organization", organization_path, data: { confirm: 'Are you sure? This will also delete all the invoices!' }, method: :delete, class:"btn btn-primary") %> 
+</div>
+<br>
   <p>Members:</p> 
 </div>

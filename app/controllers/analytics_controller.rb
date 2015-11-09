@@ -4,7 +4,7 @@ class AnalyticsController < ApplicationController
 
 	def index
     authorize! :read, @analytics
-		@analytics = Analytic.paginate(page: params[:page], per_page: 5).order('created_at DESC')
+		@analytics = Analytic.paginate(page: params[:page], per_page: 20).order('created_at DESC')
    # @value = Money.new(@analytics.first.amount)
 		#render :json => @orgs
 	end

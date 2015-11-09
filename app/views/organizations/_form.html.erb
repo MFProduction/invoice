@@ -4,7 +4,7 @@
     <%= form_for (@org) do |f| %>
     <%= f.label :name  %>
     <%= f.text_field :name  %>
-    <%= f.submit(@org.new_record? ? "Create" : "Edit", class:"btn btn-success")  %>
+    <%= f.submit(@org.new_record? ? "Create" : "Edit", class:"btn btn-primary")  %>
     <% end  %>
   </div>
 </div>

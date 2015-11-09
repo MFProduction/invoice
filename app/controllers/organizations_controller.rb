@@ -3,8 +3,9 @@ class OrganizationsController < ApplicationController
 
 
 	def index
-    authorize! :read, @org
-		@orgs = Organization.all
+    @user = current_user
+		@orgs = @user.organizations.all
+    authorize! :read, @orgs
 		#render :json => @orgs
 	end
 
@@ -14,14 +15,16 @@ class OrganizationsController < ApplicationController
   end
 
 	def new
-    authorize! :crate, @org
+    authorize! :create, @org
   	@org = Organization.new
   end
   
   def create
+    user = current_user
     authorize! :create, @org
     @org = Organization.new(org_params)
-      
+    user.add_role :orgAdmin
+    @org.users << user    
     if @org.save
       flash[:success] = "Organization has been created"
       redirect_to root_path
@@ -42,6 +45,13 @@ class OrganizationsController < ApplicationController
     else 
       render :edit
     end 
+  end
+
+  def destroy
+    authorize! :delete, @org
+    Organization.find(params[:id]).destroy
+    flash[:success] = "Organization was successfuly deleted"
+    redirect_to organizations_path
   end
 
 

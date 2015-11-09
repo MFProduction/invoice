@@ -2,7 +2,7 @@ class Invoice < ActiveRecord::Base
 	resourcify
 	belongs_to :organization
 	belongs_to :analytic
-	belongs_to :costbreakdown
+	belongs_to :costcenter
 
 
 	validates :organization_id, presence: true
@@ -10,7 +10,7 @@ class Invoice < ActiveRecord::Base
 	validates :paymentDate, presence: true
 	validates :receiptDate, presence: true
 	validates :number, presence: true
-	validates :amount, presence: true
+	validates :amount_cents, presence: true
 	validates :taxCode, presence: true, length: { is: 10 }
 
 end

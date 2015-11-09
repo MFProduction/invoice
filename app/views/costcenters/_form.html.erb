@@ -1,12 +1,12 @@
-<%= render "shared/errors", obj: @costbreakdown %>
+<%= render "shared/errors", obj: @costcenter %>
 <div class="row">
   <div class="well col-md-8 col-md-offset-2">
-    <%= form_for @costbreakdown do |f| %>
+    <%= form_for [@org, @costcenter] do |f| %>
     <%= f.label :name  %>
     <%= f.text_field :name  %>
     <%= f.label :number  %>
     <%= f.text_field :number  %>
-    <%= f.submit(@costbreakdown.new_record? ? "Create" : "Edit", class:"btn btn-success")  %>
+    <%= f.submit(@costcenter.new_record? ? "Create" : "Edit", class:"btn btn-success")  %>
     <% end  %>
   </div>
 </div>

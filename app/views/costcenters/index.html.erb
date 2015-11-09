@@ -1,0 +1,24 @@
+<%= render "shared/page_title", title: "Cost centers" %>
+<%= render "shared/second_navigation", obj: @org %>
+<div class="main">
+<% if user_signed_in? and current_user.has_role? :admin %>
+	<%= link_to("New Cost center", new_organization_costcenter_path(@org) , class:"btn btn-primary") %>
+<% end %>
+<div class="paginate"><% will_paginate @costcenters %></div>
+<table class="table table-condensed table-hover">
+	<thead>
+		<th>Name</th>
+		<th>number</th>
+		<th>Action</th>
+	</thead>
+	<tbody>
+		<% @costcenters.each do |cbs| %>
+			<tr>
+				<td><%= cbs.name %></td>
+				<td><%= cbs.number %></td>
+				<td>Edit, destroy</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+</div>

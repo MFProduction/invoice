@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :organization_users
+  has_many :organizations, through: :organization_users
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

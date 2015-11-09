@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, :alert => exception.message
     
   end
+
+  def is_orgAdmin? 
+    return  
+  end
   
   def redirect_back_or_root
     redirect_to :back 

@@ -7,13 +7,14 @@
 	<thead>
 		<th>Name</th>
 		<th>number</th>
+		<th>Action</th>
 	</thead>
 	<tbody>
 		<% @analytics.each do |analytic| %>
 			<tr>
 				<td><%= analytic.name %></td>
 				<td><%= analytic.number %></td>
-		
+				<td>Edit, Delete</td>
 			</tr>
 		<% end %>
 	</tbody>

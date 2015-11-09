@@ -7,7 +7,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-  #konti 2015
+  #first org and user
+  org = Organization.create(name: "MFProduction")
+  user = User.create!({:email => "admin@admin.com", :password => "password", :password_confirmation => "password" })
+  user.add_role :admin
+  
+  #Analitic
   analytic = Analytic.create(name: "Plače", number: 4700 )
   analytic = Analytic.create(name: "Prispevki", number: 4740 )
   analytic = Analytic.create(name: "Prispevki #2 ", number: 4741 )
@@ -18,5 +23,5 @@
 
 
   #CBS
-  cbs = Costbreakdown.create(name: "Nedefinirano", number: "000/99" )
-  cbs = Costbreakdown.create(name: "Nedefinirano - Matjaž", number: "007/99" )
+  costcenter = org.costcenters.build(name: "Nedefinirano", number: "000/99" )
+  costcenter = org.costcenters.build(name: "Nedefinirano - Matjaž", number: "007/99" )

@@ -4,7 +4,6 @@ class CreateInvoices < ActiveRecord::Migration
     	t.string :number
     	t.string :supplier
     	t.string :taxCode
-    	t.integer :amount
     	t.date :paymentDate
     	t.date :receiptDate
 

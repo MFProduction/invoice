@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103145814) do
+ActiveRecord::Schema.define(version: 20151106150205) do
 
   create_table "analytics", force: :cascade do |t|
     t.string   "name"
@@ -20,9 +20,10 @@ ActiveRecord::Schema.define(version: 20151103145814) do
     t.datetime "updated_at"
   end
 
-  create_table "costbreakdowns", force: :cascade do |t|
+  create_table "costcenters", force: :cascade do |t|
     t.string   "name"
     t.string   "number"
+    t.integer  "organization_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -31,16 +32,20 @@ ActiveRecord::Schema.define(version: 20151103145814) do
     t.string   "number"
     t.string   "supplier"
     t.string   "taxCode"
-    t.integer  "amount"
     t.date     "paymentDate"
     t.date     "receiptDate"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "amount_cents",     default: 0,     null: false
-    t.string   "amount_currency",  default: "EUR", null: false
+    t.integer  "amount_cents",    default: 0,     null: false
+    t.string   "amount_currency", default: "EUR", null: false
     t.integer  "organization_id"
     t.integer  "analytic_id"
-    t.integer  "costbreakdown_id"
+    t.integer  "costcenter_id"
+  end
+
+  create_table "organization_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "organization_id"
   end
 
   create_table "organizations", force: :cascade do |t|

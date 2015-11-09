@@ -10,6 +10,7 @@
         <th>Analytic</th>
         <th>CBS</th>
         <th>Payment Date</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -20,13 +21,15 @@
         <td><%= invoice.created_at.strftime("%-d.%-m.%Y") %></td>
         <td><%= invoice.supplier %></td>
         <td><%= invoice.taxCode %></td>
-        <td><%= humanized_money Money.new(invoice.amount) %><%= currency_symbol %></td>
+        <td><%= humanized_money Money.new(invoice.amount_cents) %><%= currency_symbol %></td>
         <td  data-toggle="tooltip" title="<%= invoice.analytic.name %>"><%= invoice.analytic.number %></td>
-          <td  data-toggle="tooltip" title="<%= invoice.costbreakdown.name %>"><%= invoice.costbreakdown.number %></td>
+          <td  data-toggle="tooltip" title="<%= invoice.costcenter.name %>"><%= invoice.costcenter.number %></td>
        
         <td><%= invoice.paymentDate.strftime("%-d.%-m.%Y") %></td>
+        <td><%= link_to("Edit", edit_invoice_path(invoice) , :class => "btn btn-small btn-default") %>
+            <%= link_to("Delete", invoice_path(invoice),data: { confirm: 'Are you sure?' }, method: :delete, :class => "btn btn-small btn-default") %></td>
+
       </tr>
-      <tr>
   <% end %>
     </tbody>
   </table>
