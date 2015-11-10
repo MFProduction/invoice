@@ -4,9 +4,12 @@ class InvoicesTest < ActiveSupport::TestCase
   def setup
     @org = Organization.create(name:"Zavod 123")
     amount = Money.new(15000)
-    @invoice = @org.invoices.build(supplier:"zavod-bob d.o.o", receiptDate: "2015-7-02", paymentDate: "2015-10-02", number: "160/02001964", amount: amount, taxCode:"SI33065888")
+    @invoice = @org.invoices.build(supplier:"zavod-bob d.o.o", receiptDate: "2015-7-02", paymentDate: "2015-10-02", number: "160/02001964", amount_cents: amount, taxCode:"SI33065888")
   end
 
+  test "the truth" do 
+    assert true
+  end
   test "invoice sould be valid" do
   	assert @invoice.valid?
   end
@@ -17,7 +20,7 @@ class InvoicesTest < ActiveSupport::TestCase
   end
   
   test "supplier sould be present" do
-    @invoice.supplier = " "
+    @invoice.supplier = ""
     assert_not @invoice.valid?
   end
 
@@ -26,8 +29,8 @@ class InvoicesTest < ActiveSupport::TestCase
     assert_not @invoice.valid?
   end
 
-  test "supplier sould not be longer than 25" do
-    @invoice.supplier = "a" *24
+  test "supplier sould not be longer than 20" do
+    @invoice.supplier = "a" *21
     assert_not @invoice.valid?
   end
 
@@ -48,7 +51,7 @@ class InvoicesTest < ActiveSupport::TestCase
   end
 
   test "amount sould be present" do
-    @invoice.amount = nil
+    @invoice.amount_cents = nil
     assert_not @invoice.valid?
   end
 

@@ -4,7 +4,7 @@ class Invoice < ActiveRecord::Base
 	belongs_to :analytic
 	belongs_to :costcenter
 
-
+	
 	validates :organization_id, presence: true
 	validates :supplier, presence: true, length: { minimum: 3, maximum: 20 }
 	validates :paymentDate, presence: true

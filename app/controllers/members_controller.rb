@@ -8,16 +8,12 @@ class MembersController < ApplicationController
     @members = @org.users.paginate(page: params[:page], per_page: 10).order('created_at DESC')
   end
 
-  # def new
-  #   authorize! :create, @analytics
-  #     @analytic = Analytic.new
-  #   end
-  
-  # def create
-  #   authorize! :create, @analytics
-  #   #binding.pry    
-  #   @analytic = Analytic.new(analytic_params)
+  # def add
+  #   authorize! :create, @member
+  #   binding.pry    
+  #   @org = Organization.find(params[:organization_id])
     
+  #   @member = User.find(params[:user_id])
   #   if @analytic.save
   #     flash[:success] = "New analytic has been created"
   #     redirect_to analytics_path

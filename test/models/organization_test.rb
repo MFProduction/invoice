@@ -1,6 +1,6 @@
 require "test_helper"
 
-class RecipeTest < ActiveSupport::TestCase
+class OrganizationTest < ActiveSupport::TestCase
   def setup
     @org = Organization.create(name:"Zavod-Bob")
   end
