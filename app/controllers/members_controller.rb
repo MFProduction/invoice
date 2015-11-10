@@ -8,27 +8,46 @@ class MembersController < ApplicationController
     @members = @org.users.paginate(page: params[:page], per_page: 10).order('created_at DESC')
   end
 
-  # def add
-  #   authorize! :create, @member
-  #   binding.pry    
-  #   @org = Organization.find(params[:organization_id])
-    
-  #   @member = User.find(params[:user_id])
-  #   if @analytic.save
-  #     flash[:success] = "New analytic has been created"
-  #     redirect_to analytics_path
-  #   else 
-  #     render :new
-  #   end
-  # end
+   def new
+    authorize! :create, @member
+    #binding.pry    
+    @org = Organization.find(params[:organization_id])  
+    @org_member = OrganizationUser.new
   
+  end
 
-  # private
-  #   def analytic_params 
-  #       params.require(:analytic).permit(:name, :number)
-  #     end
+  def create
+    authorize! :create, @member
+     #binding.pry    
+    @org = Organization.find(params[:organization_id])  
+    @org_member = OrganizationUser.new(member_params)
+    @org_member.organization_id = @org.id
+      if @org_member.save
+       flash[:success] = "New member has been added"
+       redirect_to organization_members_path
+     else 
+       render :new
+     end
+  end
 
-  #     def set_analytic
-  #         @analytic = analytic.find(params[:id])
-  #     end  
+  def destroy
+    @org = Organization.find(params[:organization_id])
+    @user = User.find(params[:user_id])
+    @org_members = OrganizationUser.where(user_id: @user.id, organization_id: @org.id)
+    if !@user.has_role? :admin
+      @org_members.each do |org_member|  
+        org_member.destroy
+      end
+      flash[:success] = "User is no longer in the organization"
+      redirect_to organization_members_path(@org)
+    else
+      flash[:warning] = "User is Admin and can't be deleted"
+      redirect_to organization_members_path(@org)
+    end
+  end
+
+  private
+    def member_params 
+        params.require(:organization_user).permit(:user_id, :organization_id)
+      end
 end

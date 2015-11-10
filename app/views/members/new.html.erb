@@ -1,0 +1,16 @@
+<%= render "shared/page_title", title: @org.name %>
+<%= render "shared/second_navigation", obj: @org %>
+
+<div class="main">
+  <%= render "shared/errors", obj: @org_member %>
+  <div class="row">
+    <div class="well col-md-8 col-md-offset-2">
+      <%= form_for @org_member, url: organization_members_path(@org), html: { method: :post }  do |f| %>
+        <%= f.label :user_id, "Select new member" %> 
+        <%= collection_select(:organization_user, :user_id, User.all, :id, :email) %>
+
+         <%= f.submit(@org_member.new_record? ? "Add" : "Edit", class:"btn btn-success")  %>
+      <% end  %>
+    </div>
+  </div>
+</div>
