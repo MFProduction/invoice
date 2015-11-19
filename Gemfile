@@ -23,14 +23,15 @@ gem 'devise'
 gem "cancan"
 gem 'rolify'
 #gem 'fog', '1.23.0'
-
+gem 'apartment'
 
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'sqlite3'
-  gem 'pry'  
+  gem 'pry'
+  gem 'rspec', '~> 3.0' 
 
 end
   

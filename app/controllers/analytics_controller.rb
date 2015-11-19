@@ -3,19 +3,19 @@ class AnalyticsController < ApplicationController
 
 
 	def index
-    authorize! :read, @analytics
+    #authorize! :read, @analytics
 		@analytics = Analytic.paginate(page: params[:page], per_page: 20).order('created_at DESC')
    # @value = Money.new(@analytics.first.amount)
 		#render :json => @orgs
 	end
 
 	def new
-    authorize! :create, @analytics
+    #authorize! :create, @analytics
   		@analytic = Analytic.new
   	end
   
   def create
-    authorize! :create, @analytics
+    #authorize! :create, @analytics
   	#binding.pry    
     @analytic = Analytic.new(analytic_params)
     

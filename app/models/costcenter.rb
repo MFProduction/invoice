@@ -1,6 +1,6 @@
 class Costcenter < ActiveRecord::Base
 	resourcify
-  belongs_to :organization
+ # belongs_to :organization
   has_many :invoices
 
 	#validates :invoice_id, presence: true

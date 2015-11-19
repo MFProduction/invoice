@@ -1,6 +1,6 @@
 <%= render "shared/errors", obj: @invoice %>
 <div class="row well">
-<%= form_for [@org, @invoice] do |f| %>
+<%= form_for @invoice do |f| %>
   <div class="well col-md-6 ">
     <%= f.label :supplier  %>
     <%= f.text_field :supplier  %>
@@ -22,11 +22,11 @@
     <%= collection_select(:invoice, :analytic_id, Analytic.all, :id, :name) %>
     <br>
     <%= f.label :costcenter_id, "Cost center" %> 
-    <%= collection_select(:invoice, :costcenter_id, @invoice.new_record? ? @org.costcenters.all : @invoice.organization.costcenters.all, :id, :name) %>
+    <%= collection_select(:invoice, :costcenter_id, @invoice.new_record? ? Costcenter.all : @invoice.costcenters.all, :id, :name) %>
     </div>
      <%= f.submit(@invoice.new_record? ? "Create" : "Edit", class:"btn btn-primary")  %>
     <% end  %>
-    <%= link_to "Go Back", @invoice.new_record? ? organization_invoices_path(@org) : organization_invoices_path(@invoice.organization), class:"btn btn-default"  %>
+    <%= link_to "Go Back", invoices_path, class:"btn btn-default"  %>
     
 </div>
     

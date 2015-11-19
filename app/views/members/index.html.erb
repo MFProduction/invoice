@@ -15,7 +15,9 @@
     <% @members.each do |member| %>
      <tr>
         <td><%= member.email %></td>  
-        <td><%= link_to("Delete", organization_members_path(@org, :user_id => member.id),data: { confirm: 'Are you sure?' }, method: :delete, :class => "btn btn-small btn-default") %></td></td>
+        <td><%= link_to("Delete", organization_members_path(@org, :user_id => member.id),data: { confirm: 'Are you sure?' }, method: :delete, :class => "btn btn-small btn-default") %>
+            <%= link_to("Make OrgAdmin","", :class => "btn btn-small btn-default") %>
+        </td>
       </tr>
   <% end %>
     </tbody>

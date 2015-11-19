@@ -1,11 +1,13 @@
 class Invoice < ActiveRecord::Base
 	resourcify
-	belongs_to :organization
+	#belongs_to :organization
 	belongs_to :analytic
 	belongs_to :costcenter
+	has_many :dividers
+	has_many :users, through: :dividers
 
 	
-	validates :organization_id, presence: true
+	#validates :organization_id, presence: true
 	validates :supplier, presence: true, length: { minimum: 3, maximum: 20 }
 	validates :paymentDate, presence: true
 	validates :receiptDate, presence: true

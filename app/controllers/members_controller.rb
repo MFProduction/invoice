@@ -46,6 +46,17 @@ class MembersController < ApplicationController
     end
   end
 
+  def addOrgAdmin 
+    @user = User.find(params[:user_id])
+    @user.add_role :orgAdmin
+    if @user.has_role? :orgAdmin
+      flash[:success] = "User is now org Admin"
+      redirect_to organization_members_path(@org)
+
+    end
+
+  end
+
   private
     def member_params 
         params.require(:organization_user).permit(:user_id, :organization_id)

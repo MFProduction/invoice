@@ -1,9 +1,9 @@
-<%= render "shared/page_title", title: @org.name %>
+<%= render "shared/page_title", title: "@org.name" %>
 <%= render "shared/second_navigation", obj: @org %>
 
 
 <div class="main">
-<%= link_to("New invoice", new_organization_invoice_path , class:"btn btn-primary") %>
+<%= link_to("New invoice", new_invoice_path , class:"btn btn-primary") %>
 <div class="paginate"><%= will_paginate %></div>
 <%= render "shared/invoiceTable", obj: @invoices %> 
 </div>
