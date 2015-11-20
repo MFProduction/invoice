@@ -11,10 +11,22 @@ class ApplicationController < ActionController::Base
   def is_orgAdmin? 
     return  
   end
-  
+    
   def redirect_back_or_root
     redirect_to :back 
     rescue ActionController::RedirectBackError
       redirect_to root_path
   end
+
+  def require_organization
+    if response.headers['Xxx'].present?
+      @org = Organization.find(response.headers['Xxx'])
+      Apartment::Tenant.switch!(@org.name)
+      #@organization = current_user.organizations.find hashid_decode(request.headers['Http_x_organization'])
+      #Apartment::Tenant.switch! @organization.name
+    #else
+    #  flash[:warrning] = "no header org"
+    end
+  end
+
 end

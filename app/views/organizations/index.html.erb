@@ -4,5 +4,5 @@
   <%= link_to("New organization", new_organization_path, class:"btn btn-primary") %>
 <% end %>
 <% @orgs.each do |org| %>
-	<h1><%= link_to( org.name, organization_path(org)) %> </h1>
+	<h1><%= link_to org.name, invoices_url(:subdomain => org.name)  %> </h1>
 <% end %>

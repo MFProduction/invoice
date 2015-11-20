@@ -1,6 +1,7 @@
 class Organization < ActiveRecord::Base 
   resourcify
   after_create :create_tenant
+  after_create :change_tenant
   #has_many :costcenters
 	#has_many :invoices
   has_many :organization_users
@@ -11,6 +12,8 @@ class Organization < ActiveRecord::Base
   private
     def create_tenant
       Apartment::Tenant.create(name)
-      #Apartment::Tenant.switch!(name)
+    end
+    def change_tenant
+        
     end
 end

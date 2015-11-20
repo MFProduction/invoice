@@ -1,7 +1,7 @@
 class InvoicesController < ApplicationController
 	before_action :set_invoice, only: [:edit, :update]
   #before_action :set_org, only: [:index, :new, :create]
-
+  before_action :require_organization
 	def index
     #authorize! :read, @invoice
     #@org = Organization.find(params[:organization_id])

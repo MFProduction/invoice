@@ -1,19 +1,13 @@
 class OrganizationsController < ApplicationController
 	before_action :set_org, only: [:show,:edit, :update]
   before_action :set_headers, only: [:new]
-
-
+  before_action :require_organization, :only => [:index]
 	def index
     @user = current_user
 		@orgs = Organization.all
     #authorize! :read, @orgs
 		#render :json => @orgs
 	end
-
-  def show
-    #authorize! :read, @org
-    @invoices = Invoice.paginate(page: params[:page], per_page: 5).order('created_at DESC')
-  end
 
 	def new
     #authorize! :create, @org
@@ -28,7 +22,8 @@ class OrganizationsController < ApplicationController
     #@org.users << user    
     if @org.save
       flash[:success] = "Organization has been created"
-      redirect_to root_path
+      redirect_to organizations_path
+
     else 
       render :new
     end
@@ -64,6 +59,7 @@ class OrganizationsController < ApplicationController
     	def set_org
       		@org = Organization.find(params[:id])
     	end 
+       
        # THIS
         def set_headers
           headers['X-FUCKYPU'] = 'Too'

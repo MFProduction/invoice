@@ -8,4 +8,7 @@ on [heroku](https://invoice-test-app.herokuapp.com/)
 ## Libraries 
 * Ruby on Rails
 * Bootstrap
-* Marionette.js (soon)
+
+## TODO
+* API
+* Marionette.js
