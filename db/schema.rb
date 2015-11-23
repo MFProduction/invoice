@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20151119112019) do
 
   create_table "organizations", force: :cascade do |t|
     t.string   "name"
+    t.string   "schema_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

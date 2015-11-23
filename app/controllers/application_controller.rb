@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 
   def require_organization
     if response.headers['Xxx'].present?
-      @org = Organization.find(response.headers['Xxx'])
+      @org = Organization.find(1)
       Apartment::Tenant.switch!(@org.name)
       #@organization = current_user.organizations.find hashid_decode(request.headers['Http_x_organization'])
       #Apartment::Tenant.switch! @organization.name

@@ -28,13 +28,14 @@ gem 'pg'
 
 group :development, :test do
   gem 'byebug'
-  #gem 'sqlite3'
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'pry'
+  
   gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'ffaker'
   gem 'database_cleaner'
 end
   
@@ -43,5 +44,6 @@ group :production do
 end
 
 group :test do
-  gem 'shoulda-matchers', '~> 3.0'
+  gem 'minitest'
+  gem 'shoulda-matchers', '2.5.0'
 end
