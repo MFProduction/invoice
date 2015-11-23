@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :organization do
-    name "zavod1234ssssss"
+    name "zavod1234sssq"
   end
 end

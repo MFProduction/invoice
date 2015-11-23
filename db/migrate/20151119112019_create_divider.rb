@@ -4,6 +4,6 @@ class CreateDivider < ActiveRecord::Migration
       t.integer :user_id, :invoice_id, :analytic_id
       
     end
-    add_money :dividers, :amount
+    add_monetize :dividers, :amount
   end
 end

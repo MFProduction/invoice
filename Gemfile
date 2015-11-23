@@ -24,11 +24,11 @@ gem "cancan"
 gem 'rolify'
 #gem 'fog', '1.23.0'
 gem 'apartment'
-
+gem 'pg'
 
 group :development, :test do
   gem 'byebug'
-  gem 'sqlite3'
+  #gem 'sqlite3'
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'pry'
@@ -39,7 +39,6 @@ group :development, :test do
 end
   
 group :production do
-    gem 'pg'
     gem 'rails_12factor'
 end
 

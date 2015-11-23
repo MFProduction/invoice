@@ -36,13 +36,13 @@ RSpec.configure do |config|
    config.order = 'random'
    config.before(:suite) do
       DatabaseCleaner.strategy = :transaction
-      DatabaseCleaner.clean_with(:truncation)
+      #DatabaseCleaner.clean_with(:truncation)
     end
     config.before(:each) do
       DatabaseCleaner.start
     end
 
-    config.before(:each) do
+    config.after(:each) do
       DatabaseCleaner.clean
     end
   

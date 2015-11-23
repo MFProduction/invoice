@@ -1,5 +1,5 @@
 class ChangeAmountToMoney < ActiveRecord::Migration
   def change
-  	   add_money :invoices, :amount
+  	add_monetize :invoices, :amount
   end
 end
