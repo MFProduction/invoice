@@ -32,8 +32,10 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'pry'
-  gem 'rspec', '~> 3.0' 
-
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
   
 group :production do
@@ -41,3 +43,6 @@ group :production do
     gem 'rails_12factor'
 end
 
+group :test do
+  gem 'shoulda-matchers', '~> 3.0'
+end

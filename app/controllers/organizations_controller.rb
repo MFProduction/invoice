@@ -1,7 +1,6 @@
 class OrganizationsController < ApplicationController
 	before_action :set_org, only: [:show,:edit, :update]
-  before_action :set_headers, only: [:new]
-  before_action :require_organization, :only => [:index]
+  
 	def index
     @user = current_user
 		@orgs = Organization.all
@@ -18,7 +17,7 @@ class OrganizationsController < ApplicationController
     user = current_user
     #authorize! :create, @org
     @org = Organization.new(org_params)
-    user.add_role :orgAdmin
+    #user.add_role :orgAdmin
     #@org.users << user    
     if @org.save
       flash[:success] = "Organization has been created"
