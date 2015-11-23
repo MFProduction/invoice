@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20151119112019) do
 
   create_table "analytics", force: :cascade do |t|
     t.string   "name"
-    t.integer  "number"
+    t.string   "number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

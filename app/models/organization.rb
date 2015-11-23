@@ -1,8 +1,7 @@
 class Organization < ActiveRecord::Base 
   RESTRICTED_SCHEMANAMES = %w(www api)
   resourcify
- # after_create :create_tenant
-  
+   
   has_many :costcenters
 	has_many :invoices
   has_many :organization_users
@@ -15,6 +14,7 @@ class Organization < ActiveRecord::Base
                           format: { with: /\A[\w\‐]+\Z/i , message: 'contains invalid characters'},
                           exclusion: { in: RESTRICTED_SCHEMANAMES, message: 'restricted'}
 
+# after_create :create_tenant
 before_validation :downcase_schema_name
 
   private
