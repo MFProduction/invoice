@@ -37,6 +37,10 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'ffaker'
   gem 'database_cleaner'
+
+  gem 'guard'
+  gem 'guard-livereload'
+  gem 'guard-rspec'
 end
   
 group :production do
