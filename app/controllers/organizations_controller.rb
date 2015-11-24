@@ -1,4 +1,4 @@
-class OrganizationController < ApplicationController
+class OrganizationsController < ApplicationController
 	before_action :set_org, only: [:show,:edit, :update]
 
 	def index

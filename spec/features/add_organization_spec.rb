@@ -4,7 +4,7 @@ describe "manipulate organization", :type => :feature do
     org = create(:organization, name:"nsov zavod")
     
     visit organizations_path
-    expect(page).to have_content(name)
+    expect(page).to have_content("nsov zavod")
   end
 
   #TODO Tantet subdoma (schema) must be unique

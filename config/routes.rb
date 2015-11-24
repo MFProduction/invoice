@@ -7,8 +7,9 @@ end
 Rails.application.routes.draw do
 	devise_for :users
   root 'pages#index'
-  resources :organizations 
+  resources :organizations, except: [:show]
   constraints SubdomainConstraints do
+    resources :members
     resources :invoices do
       resources :dividers
     end
@@ -19,6 +20,4 @@ Rails.application.routes.draw do
     #delete '/members', to: 'members#destroy', as: 'destroy_member'
   end
   resources :analytics, only: [:index, :create, :new, :destroy]
-
-  resources :members
 end
