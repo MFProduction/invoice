@@ -7,14 +7,13 @@ class Invoice < ActiveRecord::Base
 	has_many :users, through: :dividers
 
 	
-	#validates :organization_id, presence: true
-	validates :costcenter_id, presence: {message: 'Cost center is required. Create first one to continue!'}
-	validates :analytic_id, presence: { message: 'Analytic is required' }
-	validates :supplier, presence: true, length: { minimum: 3, maximum: 20 }
-	validates :paymentDate, presence: true
-	validates :receiptDate, presence: true
-	validates :number, presence: true
-	validates :amount_cents, presence: true
-	validates :taxCode, presence: true, length: { is: 10 }
+	validates :costcenter_id, :presence => {:messages => "Cost center is required" }
+	validates :analytic_id, :presence => { :messages => 'Analytic is required' }
+	validates :supplier, :presence => true, :length => { minimum: 3, maximum: 20 }
+	validates :paymentDate, :presence => true
+	validates :receiptDate, :presence => true
+	validates :number, :presence => true
+	validates :amount_cents, :presence => true
+	validates :taxCode, :presence => true, length: { is: 10 }
 
 end

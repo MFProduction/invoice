@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20151119112019) do
     t.integer  "costcenter_id"
   end
 
-  create_table "organization_users", force: :cascade do |t|
+  create_table "members", force: :cascade do |t|
     t.integer "user_id"
     t.integer "organization_id"
   end

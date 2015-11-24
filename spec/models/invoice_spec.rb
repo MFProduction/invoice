@@ -23,11 +23,11 @@ describe Invoice do
     #it { should validate_presence_of :organization_id }
     
     it { should belong_to(:costcenter) }
-    it { should validate_presence_of :costcenter_id }
-    
+    it { should validate_presence_of(:costcenter_id) }
+        
     it { should belong_to(:analytic) }
     it { should validate_presence_of :analytic_id }
-
+    
     it { should have_many(:dividers) }
     it { should have_many(:users).through(:dividers) }
   end  

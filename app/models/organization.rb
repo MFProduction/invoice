@@ -4,8 +4,8 @@ class Organization < ActiveRecord::Base
    
   has_many :costcenters
 	has_many :invoices
-  has_many :organization_users
-  has_many :users, through: :organization_users 
+  has_many :members
+  has_many :users, through: :members 
 
  validates :name, presence: true
                                      

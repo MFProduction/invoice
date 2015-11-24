@@ -25,8 +25,8 @@ describe Organization do
   end
     
   describe 'associations' do
-    it { should have_many(:users).through(:organization_users) }
-    it { should have_many(:organization_users) }
+    it { should have_many(:users).through(:members) }
+    it { should have_many(:members) }
     it { should have_many(:invoices) }
     it { should have_many(:costcenters) }
   end

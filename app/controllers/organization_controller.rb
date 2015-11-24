@@ -1,14 +1,14 @@
-class OrganizationsController < ApplicationController
+class OrganizationController < ApplicationController
 	before_action :set_org, only: [:show,:edit, :update]
-  
+
 	def index
-    @user = current_user
+  @user = current_user
 		@orgs = Organization.all
     #authorize! :read, @orgs
 		#render :json => @orgs
 	end
 
-	def new
+	def new 
     #authorize! :create, @org
   	@org = Organization.new
   end
@@ -52,7 +52,7 @@ class OrganizationsController < ApplicationController
 
 	private
 		def org_params 
-	   		params.require(:organization).permit(:name)
+	   		params.require(:organization).permit(:name, schema_name)
     	end
 
     	def set_org

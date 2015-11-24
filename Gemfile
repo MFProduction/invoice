@@ -31,16 +31,16 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'pry'
-  
+  gem 'guard'
+  gem 'guard-livereload'
+  gem 'guard-rspec'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'ffaker'
   gem 'database_cleaner'
-
-  gem 'guard'
-  gem 'guard-livereload'
-  gem 'guard-rspec'
+  gem "better_errors"
+  gem "binding_of_caller"
 end
   
 group :production do
